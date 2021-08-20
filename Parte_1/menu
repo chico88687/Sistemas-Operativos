@@ -1,0 +1,40 @@
+#!/bin/bash
+while :; do
+	echo "
+------Menu------
+1. Cria pacientes
+2. Cria médicos
+3. Stats
+4. Avalia médicos
+0. Sair
+"
+	echo -n "Escolha uma opção: "
+	read option
+	case $option in
+		1)./cria_pacientes.sh;;
+		2)
+			echo -n "Insira o nome: "
+			read nome
+			echo -n "Insira o número da cédula: "
+			read num
+			echo -n "Insira especialidade: "
+			read esp
+			echo -n "Insira o e-mail: "
+			read email
+			./cria_medico.sh "$nome" "$num" "$esp" "$email";;
+		3)
+			echo -n "Insira a localidade: "
+			read loc
+			echo -n "Insira o saldo de um médico: "
+			read saldo
+			./stats.sh $loc $saldo;;
+		4)
+			./avalia_medicos.sh ;;
+		
+		0)break;;
+		
+		*)echo "
+Opção inválida
+				";;
+	esac
+done
